@@ -54,3 +54,30 @@ class GestorTareas:
 
     def filtrar_pendientes(self) -> List[Tarea]:
         return [t for t in self.tareas if not t.completada]
+
+    # ── PRESENTACIÓN ──────────────────────────────────────────────────────────
+
+    def mostrar_tareas(self) -> None:
+        """
+        Muestra todas las tareas usando mostrar_detalle() de cada subclase.
+        Aquí se evidencia el POLIMORFISMO: mismo método, comportamiento diferente
+        según el tipo concreto (TareaSimple, TareaUrgente, TareaRecurrente).
+        """
+        if not self.tareas:
+            print("  No hay tareas registradas.")
+            return
+        for t in self.tareas:
+            print(t.mostrar_detalle())    # ← Polimorfismo en acción
+            print()
+
+    # ── PERSISTENCIA MANUAL ───────────────────────────────────────────────────
+
+    def guardar(self) -> None:
+        """Persiste el estado actual de las tareas."""
+        self._repo.guardar(self.tareas)
+
+    # ── UTILIDADES ────────────────────────────────────────────────────────────
+
+    def proximo_id(self) -> int:
+        """Genera el próximo ID disponible."""
+        return max((t.id for t in self.tareas), default=0) + 1
