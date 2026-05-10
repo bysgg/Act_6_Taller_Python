@@ -1,0 +1,13 @@
+[
+    {
+        "tipo": "TareaUrgente",
+        "id": 1,
+        "titulo": "Terminar el taller de python para hoy",
+        "descripcion": "Me hace falta agregar unas clases y que quede todo de acuerdo a lo que comento el profe",
+        "prioridad": "Alta",
+        "categoria": "Tareas",
+        "fecha_limite": "2026-05-10",
+        "completada": false,
+        "motivo_urgencia": "Necesito mejorar mis notas"
+    }
+]
