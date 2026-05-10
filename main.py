@@ -1,8 +1,9 @@
 from gestor import GestorTareas
 from tarea import TareaSimple, TareaUrgente, TareaRecurrente
+from typing import Any
 
 
-def pedir_datos_base(gestor: GestorTareas) -> dict:
+def pedir_datos_base(gestor: GestorTareas) -> dict[str, Any]:
     """Solicita los campos comunes a cualquier tipo de tarea."""
     return {
         "id": gestor.proximo_id(),
