@@ -77,7 +77,7 @@ class TareaSimple(Tarea):
 class TareaUrgente(Tarea):
     """Tarea con nivel de alerta adicional. Hereda de Tarea."""
 
-    def __init__(self, *args, motivo_urgencia: str = "Sin especificar", **kwargs):
+    def __init__(self, *args: Any, motivo_urgencia: str = "Sin especificar", **kwargs: Any):
         super().__init__(*args, **kwargs)           # Reutilización: llama al __init__ padre
         self.motivo_urgencia = motivo_urgencia
 
@@ -106,7 +106,7 @@ class TareaUrgente(Tarea):
 class TareaRecurrente(Tarea):
     """Tarea que se repite en un intervalo dado. Hereda de Tarea."""
 
-    def __init__(self, *args, frecuencia: str = "Semanal", **kwargs):
+    def __init__(self, *args: Any, frecuencia: str = "Semanal", **kwargs: Any):
         super().__init__(*args, **kwargs)           # Reutilización: llama al __init__ padre
         self.frecuencia = frecuencia
 
