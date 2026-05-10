@@ -127,3 +127,24 @@ class TareaRecurrente(Tarea):
         data = super().to_dict()
         data["frecuencia"] = self.frecuencia
         return data
+
+# ─────────────────────────────────────────────
+#  FÁBRICA: reconstruye el tipo correcto desde JSON
+# ─────────────────────────────────────────────
+def tarea_desde_dict(data: Dict[str, Any]) -> Tarea:
+    """Fábrica que reconstruye el tipo concreto de Tarea desde un diccionario."""
+    tipo = data.get("tipo", "TareaSimple")
+    base = {
+        "id": data["id"],
+        "titulo": data["titulo"],
+        "descripcion": data["descripcion"],
+        "prioridad": data["prioridad"],
+        "categoria": data["categoria"],
+        "fecha_limite": data["fecha_limite"],
+        "completada": data.get("completada", False),
+    }
+    if tipo == "TareaUrgente":
+        return TareaUrgente(**base, motivo_urgencia=data.get("motivo_urgencia", ""))
+    if tipo == "TareaRecurrente":
+        return TareaRecurrente(**base, frecuencia=data.get("frecuencia", "Semanal"))
+    return TareaSimple(**base)
