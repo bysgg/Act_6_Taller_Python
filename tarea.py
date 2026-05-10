@@ -53,3 +53,20 @@ class Tarea(ABC):
     def __repr__(self) -> str:
         estado = "✔" if self.completada else "⏳"
         return f"[{self.id}] {estado} {self.titulo} ({self.prioridad}) — {self.categoria}"
+
+# ─────────────────────────────────────────────
+#  SUBCLASE 1: Tarea Simple
+# ─────────────────────────────────────────────
+class TareaSimple(Tarea):
+    """Tarea básica sin atributos extra. Hereda todo de Tarea."""
+
+    def mostrar_detalle(self) -> str:
+        """Polimorfismo: detalle de tarea simple."""
+        return (
+            f"[SIMPLE] {self.titulo}\n"
+            f"  Descripción : {self.descripcion}\n"
+            f"  Prioridad   : {self.prioridad}\n"
+            f"  Categoría   : {self.categoria}\n"
+            f"  Fecha límite: {self.fecha_limite}\n"
+            f"  Estado      : {'Completada' if self.completada else 'Pendiente'}"
+        )
