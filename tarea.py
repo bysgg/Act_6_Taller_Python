@@ -70,3 +70,31 @@ class TareaSimple(Tarea):
             f"  Fecha límite: {self.fecha_limite}\n"
             f"  Estado      : {'Completada' if self.completada else 'Pendiente'}"
         )
+
+# ─────────────────────────────────────────────
+#  SUBCLASE 2: Tarea Urgente
+# ─────────────────────────────────────────────
+class TareaUrgente(Tarea):
+    """Tarea con nivel de alerta adicional. Hereda de Tarea."""
+
+    def __init__(self, *args, motivo_urgencia: str = "Sin especificar", **kwargs):
+        super().__init__(*args, **kwargs)           # Reutilización: llama al __init__ padre
+        self.motivo_urgencia = motivo_urgencia
+
+    def mostrar_detalle(self) -> str:
+        """Polimorfismo: detalle de tarea urgente con su motivo."""
+        return (
+            f"[URGENTE 🚨] {self.titulo}\n"
+            f"  Descripción    : {self.descripcion}\n"
+            f"  Motivo urgencia: {self.motivo_urgencia}\n"
+            f"  Prioridad      : {self.prioridad}\n"
+            f"  Categoría      : {self.categoria}\n"
+            f"  Fecha límite   : {self.fecha_limite}\n"
+            f"  Estado         : {'Completada' if self.completada else 'Pendiente'}"
+        )
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Reutilización: extiende to_dict del padre con campo extra."""
+        data = super().to_dict()
+        data["motivo_urgencia"] = self.motivo_urgencia
+        return data
