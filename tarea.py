@@ -98,3 +98,32 @@ class TareaUrgente(Tarea):
         data = super().to_dict()
         data["motivo_urgencia"] = self.motivo_urgencia
         return data
+
+
+# ─────────────────────────────────────────────
+#  SUBCLASE 3: Tarea Recurrente
+# ─────────────────────────────────────────────
+class TareaRecurrente(Tarea):
+    """Tarea que se repite en un intervalo dado. Hereda de Tarea."""
+
+    def __init__(self, *args, frecuencia: str = "Semanal", **kwargs):
+        super().__init__(*args, **kwargs)           # Reutilización: llama al __init__ padre
+        self.frecuencia = frecuencia
+
+    def mostrar_detalle(self) -> str:
+        """Polimorfismo: detalle de tarea recurrente con su frecuencia."""
+        return (
+            f"[RECURRENTE 🔄] {self.titulo}\n"
+            f"  Descripción : {self.descripcion}\n"
+            f"  Frecuencia  : {self.frecuencia}\n"
+            f"  Prioridad   : {self.prioridad}\n"
+            f"  Categoría   : {self.categoria}\n"
+            f"  Fecha límite: {self.fecha_limite}\n"
+            f"  Estado      : {'Completada' if self.completada else 'Pendiente'}"
+        )
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Reutilización: extiende to_dict del padre con campo extra."""
+        data = super().to_dict()
+        data["frecuencia"] = self.frecuencia
+        return data
