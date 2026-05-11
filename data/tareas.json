@@ -9,5 +9,36 @@
         "fecha_limite": "2026-05-10",
         "completada": false,
         "motivo_urgencia": "Necesito mejorar mis notas"
+    },
+    {
+        "tipo": "TareaSimple",
+        "id": 2,
+        "titulo": "Ir a comprar cosas para el almuerzo",
+        "descripcion": "Hoy haremos sancocho",
+        "prioridad": "Media",
+        "categoria": "Casa",
+        "fecha_limite": "2026-05-10",
+        "completada": false
+    },
+    {
+        "tipo": "TareaRecurrente",
+        "id": 3,
+        "titulo": "Cepillarme los dientes 3 veces al día",
+        "descripcion": "Es importante para cuidarme",
+        "prioridad": "Alta",
+        "categoria": "Personal",
+        "fecha_limite": "2026-05-10",
+        "completada": false,
+        "frecuencia": "Diaria"
+    },
+    {
+        "tipo": "TareaSimple",
+        "id": 4,
+        "titulo": "Grabar el video de la tarea de Programación",
+        "descripcion": "Estamos en directo",
+        "prioridad": "Alta",
+        "categoria": "Tareas",
+        "fecha_limite": "2026-05-10",
+        "completada": false
     }
 ]
